@@ -1,0 +1,17 @@
+{
+	"name": "Lucifer for cancel video in qq site",
+	"version": "0.1",
+	"manifest_version": 2,
+	"description": "Lucifer procedure",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"content_scripts": [{
+		"run_at": "document_end",
+		"matches": ["http://*.qq.com/*"],
+		"js": ["cancelVideoInQqSite.js"]
+	}],
+	"permissions": ["http://*.qq.com/*"]
+}
