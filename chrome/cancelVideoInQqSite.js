@@ -3,18 +3,18 @@
 	var relativeVideoArray;
 	var removeArray = [];
 	var relativeVideo, relativeVideoParent, nextSibling;
-	var index = 0;
+	var removeArrayIndex = 0;
 	for (var classIndex = 0, classLen = qqSiteVideoClassNameArray.length; classIndex < classLen; classIndex++) {
 		relativeVideoArray = document.getElementsByClassName(qqSiteVideoClassNameArray[classIndex]);
 		
-		for (var i = 0, len = relativeVideoArray.length; i < len; i++, index++) {
+		for (var i = 0, len = relativeVideoArray.length; i < len; i++, removeArrayIndex++) {
 			relativeVideo = relativeVideoArray[0];
 			relativeVideoParent = relativeVideo.parentElement;
 			nextSibling = relativeVideo.nextSibling;
 			
-			relativeVideoParent.insertBefore(createInstandDiv(index), nextSibling);
+			relativeVideoParent.insertBefore(createInstandDiv(removeArrayIndex), nextSibling);
 			relativeVideo.remove();
-			removeArray[index] = relativeVideo;
+			removeArray[removeArrayIndex] = relativeVideo;
 		}
 	}
 	
