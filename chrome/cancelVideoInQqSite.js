@@ -1,15 +1,21 @@
 (function(){
-	var relativeVideoArray = document.getElementsByClassName("relativeVideo");
+	var qqSiteVideoClassNameArray = ["relativeVideo"];
+	var relativeVideoArray;
 	var removeArray = [];
 	var relativeVideo, relativeVideoParent, nextSibling;
-	for (var i = 0, len = relativeVideoArray.length; i < len; i++) {
-		relativeVideo = relativeVideoArray[0];
-		relativeVideoParent = relativeVideo.parentElement;
-		nextSibling = relativeVideo.nextSibling;
+	var index = 0;
+	for (var classIndex = 0, classLen = qqSiteVideoClassNameArray.length; classIndex < classLen; classIndex++) {
+		relativeVideoArray = document.getElementsByClassName(qqSiteVideoClassNameArray[classIndex]);
 		
-		relativeVideoParent.insertBefore(createInstandDiv(i), nextSibling);
-		relativeVideo.remove();
-		removeArray[i] = relativeVideo;
+		for (var i = 0, len = relativeVideoArray.length; i < len; i++, index++) {
+			relativeVideo = relativeVideoArray[0];
+			relativeVideoParent = relativeVideo.parentElement;
+			nextSibling = relativeVideo.nextSibling;
+			
+			relativeVideoParent.insertBefore(createInstandDiv(index), nextSibling);
+			relativeVideo.remove();
+			removeArray[index] = relativeVideo;
+		}
 	}
 	
 	function createInstandDiv(index){
