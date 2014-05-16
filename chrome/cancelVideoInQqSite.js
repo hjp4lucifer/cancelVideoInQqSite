@@ -1,21 +1,30 @@
 (function(){
 	var qqSiteVideoClassNameArray = ["relativeVideo"];
+	var qqSiteVideoIdArray = ["mod_player"];
 	var relativeVideoArray;
 	var removeArray = [];
-	var relativeVideo, relativeVideoParent, nextSibling;
 	var removeArrayIndex = 0;
 	for (var classIndex = 0, classLen = qqSiteVideoClassNameArray.length; classIndex < classLen; classIndex++) {
 		relativeVideoArray = document.getElementsByClassName(qqSiteVideoClassNameArray[classIndex]);
 		
-		for (var i = 0, len = relativeVideoArray.length; i < len; i++, removeArrayIndex++) {
-			relativeVideo = relativeVideoArray[0];
-			relativeVideoParent = relativeVideo.parentElement;
-			nextSibling = relativeVideo.nextSibling;
-			
-			relativeVideoParent.insertBefore(createInstandDiv(removeArrayIndex), nextSibling);
-			relativeVideo.remove();
-			removeArray[removeArrayIndex] = relativeVideo;
+		for (var i = 0, len = relativeVideoArray.length; i < len; i++) {
+			removeVideo(relativeVideoArray[0]);
 		}
+	}
+	
+	for (var idIndex = 0, idLen = qqSiteVideoIdArray.length; idIndex < idLen; idIndex++) {
+		removeVideo(document.getElementById(qqSiteVideoIdArray[idIndex]));
+	}
+	
+	function removeVideo(relativeVideo){
+		var relativeVideoParent = relativeVideo.parentElement;
+		var nextSibling = relativeVideo.nextSibling;
+		
+		relativeVideoParent.insertBefore(createInstandDiv(removeArrayIndex), nextSibling);
+		relativeVideo.remove();
+		removeArray[removeArrayIndex] = relativeVideo;
+		
+		removeArrayIndex++
 	}
 	
 	function createInstandDiv(index){
