@@ -1,6 +1,6 @@
 (function(){
-	var qqSiteVideoClassNameArray = ["relativeVideo"];
-	var qqSiteVideoIdArray = ["mod_player"];
+	var qqSiteVideoClassNameArray = ["relativeVideo", "rv-middle"];
+	var qqSiteVideoIdArray = ["mod_player", "zhibo_player"];
 	var relativeVideoArray;
 	var removeArray = [];
 	var removeArrayIndex = 0;
@@ -17,6 +17,9 @@
 	}
 	
 	function removeVideo(relativeVideo){
+		if(!relativeVideo){
+			return;
+		}
 		var relativeVideoParent = relativeVideo.parentElement;
 		var nextSibling = relativeVideo.nextSibling;
 		
